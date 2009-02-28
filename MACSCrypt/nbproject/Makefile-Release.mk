@@ -28,13 +28,13 @@ OBJECTDIR=build/Release/${PLATFORM}
 
 # Object Files
 OBJECTFILES= \
-	${OBJECTDIR}/_ext/home/Amahdy/NetBeansProjects/MACSCrypt/../../Desktop/Complete_MACSCrypt/MACSCrypt/MACSCrypt.o \
-	${OBJECTDIR}/_ext/home/Amahdy/NetBeansProjects/MACSCrypt/../../Desktop/Complete_MACSCrypt/MACSCrypt/des.o \
-	${OBJECTDIR}/_ext/home/Amahdy/NetBeansProjects/MACSCrypt/../../Desktop/Complete_MACSCrypt/MACSCrypt/des3.o \
-	${OBJECTDIR}/_ext/home/Amahdy/NetBeansProjects/MACSCrypt/../../Desktop/Complete_MACSCrypt/MACSCrypt/Stdafx.o \
-	${OBJECTDIR}/_ext/home/Amahdy/NetBeansProjects/MACSCrypt/../../Desktop/Complete_MACSCrypt/MACSCrypt/aes.o \
-	${OBJECTDIR}/_ext/home/Amahdy/NetBeansProjects/MACSCrypt/../../Desktop/Complete_MACSCrypt/MACSCrypt/AssemblyInfo.o \
-	${OBJECTDIR}/_ext/home/Amahdy/NetBeansProjects/MACSCrypt/../../Desktop/Complete_MACSCrypt/MACSCrypt/aes3.o
+	${OBJECTDIR}/src/des3.o \
+	${OBJECTDIR}/src/aes3.o \
+	${OBJECTDIR}/src/aes.o \
+	${OBJECTDIR}/src/AssemblyInfo.o \
+	${OBJECTDIR}/src/des.o \
+	${OBJECTDIR}/src/MACSCrypt.o \
+	${OBJECTDIR}/src/Stdafx.o
 
 # C Compiler Flags
 CFLAGS=
@@ -57,40 +57,40 @@ dist/Release/${PLATFORM}/macscrypt: ${OBJECTFILES}
 	${MKDIR} -p dist/Release/${PLATFORM}
 	${LINK.cc} -o dist/Release/${PLATFORM}/macscrypt ${OBJECTFILES} ${LDLIBSOPTIONS} 
 
-${OBJECTDIR}/_ext/home/Amahdy/NetBeansProjects/MACSCrypt/../../Desktop/Complete_MACSCrypt/MACSCrypt/MACSCrypt.o: ../../Desktop/Complete\ MACSCrypt/MACSCrypt/MACSCrypt.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/home/Amahdy/NetBeansProjects/MACSCrypt/../../Desktop/Complete_MACSCrypt/MACSCrypt
+${OBJECTDIR}/src/des3.o: src/des3.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/home/Amahdy/NetBeansProjects/MACSCrypt/../../Desktop/Complete_MACSCrypt/MACSCrypt/MACSCrypt.o ../../Desktop/Complete\ MACSCrypt/MACSCrypt/MACSCrypt.cpp
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/des3.o src/des3.cpp
 
-${OBJECTDIR}/_ext/home/Amahdy/NetBeansProjects/MACSCrypt/../../Desktop/Complete_MACSCrypt/MACSCrypt/des.o: ../../Desktop/Complete\ MACSCrypt/MACSCrypt/des.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/home/Amahdy/NetBeansProjects/MACSCrypt/../../Desktop/Complete_MACSCrypt/MACSCrypt
+${OBJECTDIR}/src/aes3.o: src/aes3.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/home/Amahdy/NetBeansProjects/MACSCrypt/../../Desktop/Complete_MACSCrypt/MACSCrypt/des.o ../../Desktop/Complete\ MACSCrypt/MACSCrypt/des.cpp
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/aes3.o src/aes3.cpp
 
-${OBJECTDIR}/_ext/home/Amahdy/NetBeansProjects/MACSCrypt/../../Desktop/Complete_MACSCrypt/MACSCrypt/des3.o: ../../Desktop/Complete\ MACSCrypt/MACSCrypt/des3.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/home/Amahdy/NetBeansProjects/MACSCrypt/../../Desktop/Complete_MACSCrypt/MACSCrypt
+${OBJECTDIR}/src/aes.o: src/aes.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/home/Amahdy/NetBeansProjects/MACSCrypt/../../Desktop/Complete_MACSCrypt/MACSCrypt/des3.o ../../Desktop/Complete\ MACSCrypt/MACSCrypt/des3.cpp
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/aes.o src/aes.cpp
 
-${OBJECTDIR}/_ext/home/Amahdy/NetBeansProjects/MACSCrypt/../../Desktop/Complete_MACSCrypt/MACSCrypt/Stdafx.o: ../../Desktop/Complete\ MACSCrypt/MACSCrypt/Stdafx.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/home/Amahdy/NetBeansProjects/MACSCrypt/../../Desktop/Complete_MACSCrypt/MACSCrypt
+${OBJECTDIR}/src/AssemblyInfo.o: src/AssemblyInfo.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/home/Amahdy/NetBeansProjects/MACSCrypt/../../Desktop/Complete_MACSCrypt/MACSCrypt/Stdafx.o ../../Desktop/Complete\ MACSCrypt/MACSCrypt/Stdafx.cpp
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/AssemblyInfo.o src/AssemblyInfo.cpp
 
-${OBJECTDIR}/_ext/home/Amahdy/NetBeansProjects/MACSCrypt/../../Desktop/Complete_MACSCrypt/MACSCrypt/aes.o: ../../Desktop/Complete\ MACSCrypt/MACSCrypt/aes.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/home/Amahdy/NetBeansProjects/MACSCrypt/../../Desktop/Complete_MACSCrypt/MACSCrypt
+${OBJECTDIR}/src/des.o: src/des.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/home/Amahdy/NetBeansProjects/MACSCrypt/../../Desktop/Complete_MACSCrypt/MACSCrypt/aes.o ../../Desktop/Complete\ MACSCrypt/MACSCrypt/aes.cpp
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/des.o src/des.cpp
 
-${OBJECTDIR}/_ext/home/Amahdy/NetBeansProjects/MACSCrypt/../../Desktop/Complete_MACSCrypt/MACSCrypt/AssemblyInfo.o: ../../Desktop/Complete\ MACSCrypt/MACSCrypt/AssemblyInfo.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/home/Amahdy/NetBeansProjects/MACSCrypt/../../Desktop/Complete_MACSCrypt/MACSCrypt
+${OBJECTDIR}/src/MACSCrypt.o: src/MACSCrypt.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/home/Amahdy/NetBeansProjects/MACSCrypt/../../Desktop/Complete_MACSCrypt/MACSCrypt/AssemblyInfo.o ../../Desktop/Complete\ MACSCrypt/MACSCrypt/AssemblyInfo.cpp
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/MACSCrypt.o src/MACSCrypt.cpp
 
-${OBJECTDIR}/_ext/home/Amahdy/NetBeansProjects/MACSCrypt/../../Desktop/Complete_MACSCrypt/MACSCrypt/aes3.o: ../../Desktop/Complete\ MACSCrypt/MACSCrypt/aes3.cpp 
-	${MKDIR} -p ${OBJECTDIR}/_ext/home/Amahdy/NetBeansProjects/MACSCrypt/../../Desktop/Complete_MACSCrypt/MACSCrypt
+${OBJECTDIR}/src/Stdafx.o: src/Stdafx.cpp 
+	${MKDIR} -p ${OBJECTDIR}/src
 	${RM} $@.d
-	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/_ext/home/Amahdy/NetBeansProjects/MACSCrypt/../../Desktop/Complete_MACSCrypt/MACSCrypt/aes3.o ../../Desktop/Complete\ MACSCrypt/MACSCrypt/aes3.cpp
+	$(COMPILE.cc) -O2 -MMD -MP -MF $@.d -o ${OBJECTDIR}/src/Stdafx.o src/Stdafx.cpp
 
 # Subprojects
 .build-subprojects:

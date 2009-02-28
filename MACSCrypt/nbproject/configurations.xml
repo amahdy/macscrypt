@@ -4,14 +4,14 @@
     <logicalFolder name="HeaderFiles"
                    displayName="Header Files"
                    projectFiles="true">
-      <itemPath>../../Desktop/Complete MACSCrypt/MACSCrypt/aes.h</itemPath>
-      <itemPath>../../Desktop/Complete MACSCrypt/MACSCrypt/aes3.h</itemPath>
-      <itemPath>../../Desktop/Complete MACSCrypt/MACSCrypt/Crypt.h</itemPath>
-      <itemPath>../../Desktop/Complete MACSCrypt/MACSCrypt/des.h</itemPath>
-      <itemPath>../../Desktop/Complete MACSCrypt/MACSCrypt/des3.h</itemPath>
-      <itemPath>../../Desktop/Complete MACSCrypt/MACSCrypt/MACSCrypt.h</itemPath>
-      <itemPath>../../Desktop/Complete MACSCrypt/MACSCrypt/resource.h</itemPath>
-      <itemPath>../../Desktop/Complete MACSCrypt/MACSCrypt/Stdafx.h</itemPath>
+      <itemPath>src/aes.h</itemPath>
+      <itemPath>src/aes3.h</itemPath>
+      <itemPath>src/Crypt.h</itemPath>
+      <itemPath>src/des.h</itemPath>
+      <itemPath>src/des3.h</itemPath>
+      <itemPath>src/MACSCrypt.h</itemPath>
+      <itemPath>src/resource.h</itemPath>
+      <itemPath>src/Stdafx.h</itemPath>
     </logicalFolder>
     <logicalFolder name="ResourceFiles"
                    displayName="Resource Files"
@@ -20,13 +20,13 @@
     <logicalFolder name="SourceFiles"
                    displayName="Source Files"
                    projectFiles="true">
-      <itemPath>../../Desktop/Complete MACSCrypt/MACSCrypt/aes.cpp</itemPath>
-      <itemPath>../../Desktop/Complete MACSCrypt/MACSCrypt/aes3.cpp</itemPath>
-      <itemPath>../../Desktop/Complete MACSCrypt/MACSCrypt/AssemblyInfo.cpp</itemPath>
-      <itemPath>../../Desktop/Complete MACSCrypt/MACSCrypt/des.cpp</itemPath>
-      <itemPath>../../Desktop/Complete MACSCrypt/MACSCrypt/des3.cpp</itemPath>
-      <itemPath>../../Desktop/Complete MACSCrypt/MACSCrypt/MACSCrypt.cpp</itemPath>
-      <itemPath>../../Desktop/Complete MACSCrypt/MACSCrypt/Stdafx.cpp</itemPath>
+      <itemPath>src/aes.cpp</itemPath>
+      <itemPath>src/aes3.cpp</itemPath>
+      <itemPath>src/AssemblyInfo.cpp</itemPath>
+      <itemPath>src/des.cpp</itemPath>
+      <itemPath>src/des3.cpp</itemPath>
+      <itemPath>src/MACSCrypt.cpp</itemPath>
+      <itemPath>src/Stdafx.cpp</itemPath>
     </logicalFolder>
     <logicalFolder name="ExternalFiles"
                    displayName="Important Files"
@@ -48,49 +48,49 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
-      <item path="../../Desktop/Complete MACSCrypt/MACSCrypt/AssemblyInfo.cpp">
+      <item path="src/AssemblyInfo.cpp">
         <itemTool>1</itemTool>
       </item>
-      <item path="../../Desktop/Complete MACSCrypt/MACSCrypt/Crypt.h">
+      <item path="src/Crypt.h">
         <itemTool>3</itemTool>
       </item>
-      <item path="../../Desktop/Complete MACSCrypt/MACSCrypt/MACSCrypt.cpp">
+      <item path="src/MACSCrypt.cpp">
         <itemTool>1</itemTool>
       </item>
-      <item path="../../Desktop/Complete MACSCrypt/MACSCrypt/MACSCrypt.h">
+      <item path="src/MACSCrypt.h">
         <itemTool>3</itemTool>
       </item>
-      <item path="../../Desktop/Complete MACSCrypt/MACSCrypt/Stdafx.cpp">
+      <item path="src/Stdafx.cpp">
         <itemTool>1</itemTool>
       </item>
-      <item path="../../Desktop/Complete MACSCrypt/MACSCrypt/Stdafx.h">
+      <item path="src/Stdafx.h">
         <itemTool>3</itemTool>
       </item>
-      <item path="../../Desktop/Complete MACSCrypt/MACSCrypt/aes.cpp">
+      <item path="src/aes.cpp">
         <itemTool>1</itemTool>
       </item>
-      <item path="../../Desktop/Complete MACSCrypt/MACSCrypt/aes.h">
+      <item path="src/aes.h">
         <itemTool>3</itemTool>
       </item>
-      <item path="../../Desktop/Complete MACSCrypt/MACSCrypt/aes3.cpp">
+      <item path="src/aes3.cpp">
         <itemTool>1</itemTool>
       </item>
-      <item path="../../Desktop/Complete MACSCrypt/MACSCrypt/aes3.h">
+      <item path="src/aes3.h">
         <itemTool>3</itemTool>
       </item>
-      <item path="../../Desktop/Complete MACSCrypt/MACSCrypt/des.cpp">
+      <item path="src/des.cpp">
         <itemTool>1</itemTool>
       </item>
-      <item path="../../Desktop/Complete MACSCrypt/MACSCrypt/des.h">
+      <item path="src/des.h">
         <itemTool>3</itemTool>
       </item>
-      <item path="../../Desktop/Complete MACSCrypt/MACSCrypt/des3.cpp">
+      <item path="src/des3.cpp">
         <itemTool>1</itemTool>
       </item>
-      <item path="../../Desktop/Complete MACSCrypt/MACSCrypt/des3.h">
+      <item path="src/des3.h">
         <itemTool>3</itemTool>
       </item>
-      <item path="../../Desktop/Complete MACSCrypt/MACSCrypt/resource.h">
+      <item path="src/resource.h">
         <itemTool>3</itemTool>
       </item>
     </conf>
@@ -115,49 +115,49 @@
           </linkerLibItems>
         </linkerTool>
       </compileType>
-      <item path="../../Desktop/Complete MACSCrypt/MACSCrypt/AssemblyInfo.cpp">
+      <item path="src/AssemblyInfo.cpp">
         <itemTool>1</itemTool>
       </item>
-      <item path="../../Desktop/Complete MACSCrypt/MACSCrypt/Crypt.h">
+      <item path="src/Crypt.h">
         <itemTool>3</itemTool>
       </item>
-      <item path="../../Desktop/Complete MACSCrypt/MACSCrypt/MACSCrypt.cpp">
+      <item path="src/MACSCrypt.cpp">
         <itemTool>1</itemTool>
       </item>
-      <item path="../../Desktop/Complete MACSCrypt/MACSCrypt/MACSCrypt.h">
+      <item path="src/MACSCrypt.h">
         <itemTool>3</itemTool>
       </item>
-      <item path="../../Desktop/Complete MACSCrypt/MACSCrypt/Stdafx.cpp">
+      <item path="src/Stdafx.cpp">
         <itemTool>1</itemTool>
       </item>
-      <item path="../../Desktop/Complete MACSCrypt/MACSCrypt/Stdafx.h">
+      <item path="src/Stdafx.h">
         <itemTool>3</itemTool>
       </item>
-      <item path="../../Desktop/Complete MACSCrypt/MACSCrypt/aes.cpp">
+      <item path="src/aes.cpp">
         <itemTool>1</itemTool>
       </item>
-      <item path="../../Desktop/Complete MACSCrypt/MACSCrypt/aes.h">
+      <item path="src/aes.h">
         <itemTool>3</itemTool>
       </item>
-      <item path="../../Desktop/Complete MACSCrypt/MACSCrypt/aes3.cpp">
+      <item path="src/aes3.cpp">
         <itemTool>1</itemTool>
       </item>
-      <item path="../../Desktop/Complete MACSCrypt/MACSCrypt/aes3.h">
+      <item path="src/aes3.h">
         <itemTool>3</itemTool>
       </item>
-      <item path="../../Desktop/Complete MACSCrypt/MACSCrypt/des.cpp">
+      <item path="src/des.cpp">
         <itemTool>1</itemTool>
       </item>
-      <item path="../../Desktop/Complete MACSCrypt/MACSCrypt/des.h">
+      <item path="src/des.h">
         <itemTool>3</itemTool>
       </item>
-      <item path="../../Desktop/Complete MACSCrypt/MACSCrypt/des3.cpp">
+      <item path="src/des3.cpp">
         <itemTool>1</itemTool>
       </item>
-      <item path="../../Desktop/Complete MACSCrypt/MACSCrypt/des3.h">
+      <item path="src/des3.h">
         <itemTool>3</itemTool>
       </item>
-      <item path="../../Desktop/Complete MACSCrypt/MACSCrypt/resource.h">
+      <item path="src/resource.h">
         <itemTool>3</itemTool>
       </item>
     </conf>
