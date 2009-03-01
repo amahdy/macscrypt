@@ -1,6 +1,6 @@
 /*###################################
- #	DES [Data Encryption Standard]	#
- #	By : Amahdy [www.amahdy.com]	#
+ #  DES [Data Encryption Standard]  #
+ #  By : Amahdy [www.amahdy.com]    #
  ###################################*/
 
 #include "stdafx.h"
