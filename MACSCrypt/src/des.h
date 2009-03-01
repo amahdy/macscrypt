@@ -1,22 +1,22 @@
 /*###################################
- #	By : Amahdy [www.amahdy.com]	#
+ #  By : Amahdy [www.amahdy.com]    #
  ###################################*/
 
 #ifndef DESALGORITHM
 #define DESALGORITHM
 
 /*###################################
- #	DES "Data Encryption Standard"	#
- #		====ByAmahdy====			#
- #		[www.amahdy.com]			#
+ #  DES "Data Encryption Standard"  #
+ #      ====ByAmahdy====            #
+ #	[www.amahdy.com]            #
  ###################################*/
 
 class CDES:public Crypt
 {
-	char **keyEx;									//expanded key
-	char s[8][4][16];								//s-boxs
-	int numberOfRounds;										//number of rounds to execute the algorithm
-	char* DES(char*,bool=false);			//GO from here !
+	char **keyEx; //expanded key
+	char s[8][4][16]; //s-boxs
+	int numberOfRounds; //number of rounds to execute the algorithm
+	char* DES(char*,bool=false); //GO from here !
 
 	//additional functions:
 	/*
@@ -28,11 +28,11 @@ class CDES:public Crypt
 	void rotation(char*, int);
 	void exor(char*, char*, char*, int);
 public:
-	CDES(int=16);							//consturctor, feed it with the number of rounds
-	~CDES();								//destructor, never mind ... called automatically
-	void KeyGen(const char*);						//should call this before anything to generate keys
-	char* Encrypt(char*);					//Call this to encrypt
-	char* Decrypt(char*);					//Call this to decrypt
+	CDES(int=16); //consturctor, feed it with the number of rounds
+	~CDES(); //destructor, never mind ... called automatically
+	void KeyGen(const char*); //should call this before anything to generate keys
+	char* Encrypt(char*); //Call this to encrypt
+	char* Decrypt(char*); //Call this to decrypt
 
 /*
 	>sample encryption:
