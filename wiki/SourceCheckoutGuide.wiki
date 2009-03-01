@@ -1,0 +1,36 @@
+#summary Guide to the source code checkout.
+#labels Featured,Phase-Implementation
+
+<wiki:toc max_depth="2" />
+
+= Introduction =
+
+This page contains a detailed instructions on how to link to the source code, the developers team is using NetBeans as IDE, so the instructions are explained for this IDE.
+
+= Details =
+
+== Get the NetBeans IDE ==
+ * Go to http://www.netbeans.org/downloads/index.html.
+ * Choose the bundle you need to develop with, let's say the C/C++ bundle.
+ * Assuming you will continue to develop with C/C++, here is a useful link to continue installing and configuring the IDE: http://www.netbeans.org/kb/trails/cnd.html.
+
+== Installing Subversion Support ==
+ * You need to have a svn tool to be able to checkout the source code, assuming you are using the NetBeans IDE, here is a link for details on how to get svn tool and link it to the IDE: http://www.netbeans.org/kb/60/ide/subversion.html.
+
+== Getting the Source Code ==
+ * Open the NetBeans IDE.
+ * From the menu choose "Versioning"
+ * Choose "Checkout...".
+ * In the "Repository URL" write "https://macscrypt.googlecode.com/svn".
+ * Press "Next".
+ * Browse the source folder you want to checkout then press "Next".
+ * After finishing, the source code should be found under the specified local path.
+ 
+== Start Using the Source Code ==
+ * Open the NetBeans IDE, I'll assume that you want to open a C++ code.
+ * From the menu "File" then "Open Project".
+ * Choose the project location then choose "Open".
+ * That's it! you can start debuging and building the source code from the IDE.
+
+== Submit Patches and Join ==
+ * Everybody is mostly welcome to join the development team, just post your patch, issue, or suggestion and request to join and if serious enough, one of the moderators will contact you to let you join!
