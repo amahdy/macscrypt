@@ -336,7 +336,7 @@ char* CDES::Decrypt(char *cipherText) {
  * ==============================================
  * @name CONSTRUCTOR
  * @desc Initialize number of rounds and the S-BOX.
- * @param int: Number of rounds.
+ * @param int: Number of rounds [default: 16].
  * @return void
  * ==============================================
  */
