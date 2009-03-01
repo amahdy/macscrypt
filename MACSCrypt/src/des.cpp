@@ -1,43 +1,52 @@
 /*###################################
- #  DES [Data Encryption Standard]  #
- #  By : Amahdy [www.amahdy.com]    #
- ###################################*/
+  # DES [Data Encryption Standard]
+  # By: Amahdy [www.amahdy.com]
+  ###################################*/
 
-//#include "stdafx.h"
-
-/*	==============================================
-        HEX16 TO BIN64 CONVERTER
-        >convert a string of 16 hexadecimals
-         to a string of 64 bits.
-        ==============================================	* /
-void CDES::HexToBin(const char *hex, char *bin)
-{
-        for(char k=0; k<16; k++)
-        {
-                char a=hex[k]-'0';
-                if(a>16)
-                        a-=7;
-                for(char z=4; z>0; a/=2)
-                bin[--z+4*k]=a%2;
-        }
-}*/
-
-/*	==============================================
-        BIN64 TO HEX16 CONVERTER
-        >convert a string of 64 bits
-         to a string of 16 hexadecimals.
-        ==============================================	* /
-
-void CDES::BinToHex(const char *bin, char *hex)
-{
-        char t[17]="0123456789ABCDEF";
-        for(char i=0; i<16; i++)
-                hex[i]=t[(8*bin[0+i*4])+(4*bin[1+i*4])+(2*bin[2+i*4])+bin[3+i*4]];
+/**
+ * ==============================================
+ * @name HEX16 TO BIN64 CONVERTER
+ * @desc convert a string of 16 hexadecimals to a string of 64 bits.
+ * @param %1 const char*: the input 16 hexadecimal.
+ *        %2 char*: the output 64 binary.
+ * @return void [return is specified as param %2].
+ * @note NOT USED!
+ * ==============================================
+ *//*
+void CDES::HexToBin(const char *hex, char *bin) {
+    for (char k = 0; k < 16; k++) {
+        char a = hex[k]-'0';
+        if (a > 16)
+            a -= 7;
+        for (char z = 4; z > 0; a /= 2)
+            bin[--z+4*k] = a%2;
+    }
 }*/
 
 /**
- * dec_8 TO bin_64 CONVERTER
- *   convert a string of 8 char to a string of 64 char (each char is a bit)
+ * ==============================================
+ * @name BIN64 TO HEX16 CONVERTER
+ * @desc convert a string of 64 bits to a string of 16 hexadecimals.
+ * @param %1 const char*: the input 64 binary.
+ *        %2 char*: the output 16 hexadecimal.
+ * @return void [return is specified as param %2].
+ * @note NOT USED!
+ * ==============================================
+ *//*
+void CDES::BinToHex(const char *bin, char *hex) {
+    char t[17]="0123456789ABCDEF";
+    for (char i = 0; i < 16; i++)
+        hex[i] = t[(8*bin[0+i*4])+(4*bin[1+i*4])+(2*bin[2+i*4])+bin[3+i*4]];
+}*/
+
+/**
+ * ==============================================
+ * @name dec_8 TO bin_64 CONVERTER
+ * @desc convert a string of 8 char to a string of 64 char (each char is a bit).
+ * @param %1 const char*: the input 8 decimal.
+ *        %2 char*: the output 64 binary.
+ * @return void [return is specified as param %2].
+ * ==============================================
  */
 void CDES::DecToBin(const char *dec_8, char *bin_64) {
     int number;
@@ -49,8 +58,13 @@ void CDES::DecToBin(const char *dec_8, char *bin_64) {
 }
 
 /**
- * bin_64 TO dec_8 CONVERTER
- * convert a string of 64 char (each char is a bit) to a string of 8 char.
+ * ==============================================
+ * @name bin_64 TO dec_8 CONVERTER
+ * @desc convert a string of 64 char (each char is a bit) to a string of 8 char.
+ * @param %1 const char*: the input 64 binary.
+ *        %2 char*: the output 8 decimal.
+ * @return void [return is specified as param %2].
+ * ==============================================
  */
 void CDES::BinToDec(const char *bin_64, char *dec_8) {
     for (int i = 0; i < 8; i++)
@@ -59,9 +73,11 @@ void CDES::BinToDec(const char *bin_64, char *dec_8) {
 
 /**
  * ==============================================
- * ROTATION / SHIFT
- * >rotate 'data' upon the 'rotNum'
- * (one or two left shifts).
+ * @name ROTATION / SHIFT
+ * @desc rotate 'data' upon the 'rotNum', (one or two left shifts).
+ * @param %1 char*: the data to be shifted.
+ *        %2 int: the number of rotation to specify the number of shifts.
+ * @return void
  * ==============================================
  */
 void CDES::rotation(char *data, int rotNum) {
@@ -75,10 +91,13 @@ void CDES::rotation(char *data, int rotNum) {
 
 /**
  * ==============================================
- * XOR
- * >take 'a' and 'b' both of length 'n',
- * make xor between them and store
- * result in 'result'.
+ * @name XOR
+ * @desc take 'a' and 'b' both of length 'n', make xor between them and store result in 'result'.
+ * @param %1 char*: the xor left hand side.
+ *        %2 char*: the xor right hand side.
+ *        %3 char*: the returned result.
+ *        %4 int: the length of both of %1 and %2.
+ * @return void [return is specified as param %3].
  * ==============================================
  */
 void CDES::exor(char *a, char *b, char *result, int n) {
@@ -88,8 +107,10 @@ void CDES::exor(char *a, char *b, char *result, int n) {
 
 /**
  * ==============================================
- * KEY GENERATOR
- * >store in the 'keyEx' the expanded key.
+ * @name KEY GENERATOR
+ * @desc store in the 'keyEx' the expanded key.
+ * @param const char*: the encryption/decryption process key.
+ * @return void
  * ==============================================
  */
 void CDES::KeyGen(const char *Key_8) {
@@ -97,8 +118,7 @@ void CDES::KeyGen(const char *Key_8) {
     DecToBin(Key_8, key);
 
     /**
-     * ---www.amahdy.com---
-     * > Generation Of Keys
+     * Generation Of Keys.
      */
     
     /*PermutationChoice-1: =====================================================================================================================================================*/
@@ -114,11 +134,9 @@ void CDES::KeyGen(const char *Key_8) {
     /*==========================================================================================================================================================================*/
 
     /**
-     * ---www.amahdy.com---
-     * > Completing All Key-Gen numberOfRounds:
-     * > we have
-     *      left  side: KeyAfterPC1    to KeyAfterPC1+27
-     *      right side: KeyAfterPC1+28 to KeyAfterPC1+55
+     * Completing All Key-Gen numberOfRounds,
+     *      left  side: KeyAfterPC1    to KeyAfterPC1+27.
+     *      right side: KeyAfterPC1+28 to KeyAfterPC1+55.
      */
     keyEx = new char*[numberOfRounds];
     for (int i = 0; i < numberOfRounds; i++) {
@@ -145,12 +163,11 @@ void CDES::KeyGen(const char *Key_8) {
 
 /**
  * ==============================================
- * DES THE MAIN FUNCTION
- * >the main function,
- * input is 16 hexadecimals, method is:
- *      false: ENCRYPT
- *      true : DECRYPT
- * output is also a 16 hexadecimals.
+ * @name DES THE MAIN FUNCTION
+ * @desc the main function.
+ * @param %1 char*: 16 hexadecimals representing the INPUT.
+ *        %2 bool: false for ENCRYPT and true for DECRYPT.
+ * @return char*: 16 hexadecimals representing the OUTPUT.
  * ==============================================
  */
 char* CDES::DES(char *inputDec_8, bool method) {
@@ -158,34 +175,30 @@ char* CDES::DES(char *inputDec_8, bool method) {
     DecToBin(inputDec_8, input);
 
     /**
-     * ---www.amahdy.com---
-     * > IP-1
-     * > Will have
-     *      left  side: InputAfterIP    to InputAfterIP+31
-     *      right side: InputAfterIP+32 to InputAfterIP+63
-     */
-     /*Initial permutation: ======================================================================================================================================================================================================*/
-     char *InputAfterIP=new char[64];
-     InputAfterIP[ 0]=input[57]; InputAfterIP[ 1]=input[49]; InputAfterIP[ 2]=input[41]; InputAfterIP[ 3]=input[33]; InputAfterIP[ 4]=input[25]; InputAfterIP[ 5]=input[17]; InputAfterIP[ 6]=input[ 9]; InputAfterIP[ 7]=input[ 1];
-     InputAfterIP[ 8]=input[59]; InputAfterIP[ 9]=input[51]; InputAfterIP[10]=input[43]; InputAfterIP[11]=input[35]; InputAfterIP[12]=input[27]; InputAfterIP[13]=input[19]; InputAfterIP[14]=input[11]; InputAfterIP[15]=input[ 3];
-     InputAfterIP[16]=input[61]; InputAfterIP[17]=input[53]; InputAfterIP[18]=input[45]; InputAfterIP[19]=input[37]; InputAfterIP[20]=input[29]; InputAfterIP[21]=input[21]; InputAfterIP[22]=input[13]; InputAfterIP[23]=input[ 5];
-     InputAfterIP[24]=input[63]; InputAfterIP[25]=input[55]; InputAfterIP[26]=input[47]; InputAfterIP[27]=input[39]; InputAfterIP[28]=input[31]; InputAfterIP[29]=input[23]; InputAfterIP[30]=input[15]; InputAfterIP[31]=input[ 7];
-     InputAfterIP[32]=input[56]; InputAfterIP[33]=input[48]; InputAfterIP[34]=input[40]; InputAfterIP[35]=input[32]; InputAfterIP[36]=input[24]; InputAfterIP[37]=input[16]; InputAfterIP[38]=input[ 8]; InputAfterIP[39]=input[ 0];
-     InputAfterIP[40]=input[58]; InputAfterIP[41]=input[50]; InputAfterIP[42]=input[42]; InputAfterIP[43]=input[34]; InputAfterIP[44]=input[26]; InputAfterIP[45]=input[18]; InputAfterIP[46]=input[10]; InputAfterIP[47]=input[ 2];
-     InputAfterIP[48]=input[60]; InputAfterIP[49]=input[52]; InputAfterIP[50]=input[44]; InputAfterIP[51]=input[36]; InputAfterIP[52]=input[28]; InputAfterIP[53]=input[20]; InputAfterIP[54]=input[12]; InputAfterIP[55]=input[ 4];
-     InputAfterIP[56]=input[62]; InputAfterIP[57]=input[54]; InputAfterIP[58]=input[46]; InputAfterIP[59]=input[38]; InputAfterIP[60]=input[30]; InputAfterIP[61]=input[22]; InputAfterIP[62]=input[14]; InputAfterIP[63]=input[ 6];
-     /*===========================================================================================================================================================================================================================*/
+    * IP-1,
+    *      left  side: InputAfterIP    to InputAfterIP+31.
+    *      right side: InputAfterIP+32 to InputAfterIP+63.
+    */
+    /*Initial permutation: ======================================================================================================================================================================================================*/
+    char *InputAfterIP=new char[64];
+    InputAfterIP[ 0]=input[57]; InputAfterIP[ 1]=input[49]; InputAfterIP[ 2]=input[41]; InputAfterIP[ 3]=input[33]; InputAfterIP[ 4]=input[25]; InputAfterIP[ 5]=input[17]; InputAfterIP[ 6]=input[ 9]; InputAfterIP[ 7]=input[ 1];
+    InputAfterIP[ 8]=input[59]; InputAfterIP[ 9]=input[51]; InputAfterIP[10]=input[43]; InputAfterIP[11]=input[35]; InputAfterIP[12]=input[27]; InputAfterIP[13]=input[19]; InputAfterIP[14]=input[11]; InputAfterIP[15]=input[ 3];
+    InputAfterIP[16]=input[61]; InputAfterIP[17]=input[53]; InputAfterIP[18]=input[45]; InputAfterIP[19]=input[37]; InputAfterIP[20]=input[29]; InputAfterIP[21]=input[21]; InputAfterIP[22]=input[13]; InputAfterIP[23]=input[ 5];
+    InputAfterIP[24]=input[63]; InputAfterIP[25]=input[55]; InputAfterIP[26]=input[47]; InputAfterIP[27]=input[39]; InputAfterIP[28]=input[31]; InputAfterIP[29]=input[23]; InputAfterIP[30]=input[15]; InputAfterIP[31]=input[ 7];
+    InputAfterIP[32]=input[56]; InputAfterIP[33]=input[48]; InputAfterIP[34]=input[40]; InputAfterIP[35]=input[32]; InputAfterIP[36]=input[24]; InputAfterIP[37]=input[16]; InputAfterIP[38]=input[ 8]; InputAfterIP[39]=input[ 0];
+    InputAfterIP[40]=input[58]; InputAfterIP[41]=input[50]; InputAfterIP[42]=input[42]; InputAfterIP[43]=input[34]; InputAfterIP[44]=input[26]; InputAfterIP[45]=input[18]; InputAfterIP[46]=input[10]; InputAfterIP[47]=input[ 2];
+    InputAfterIP[48]=input[60]; InputAfterIP[49]=input[52]; InputAfterIP[50]=input[44]; InputAfterIP[51]=input[36]; InputAfterIP[52]=input[28]; InputAfterIP[53]=input[20]; InputAfterIP[54]=input[12]; InputAfterIP[55]=input[ 4];
+    InputAfterIP[56]=input[62]; InputAfterIP[57]=input[54]; InputAfterIP[58]=input[46]; InputAfterIP[59]=input[38]; InputAfterIP[60]=input[30]; InputAfterIP[61]=input[22]; InputAfterIP[62]=input[14]; InputAfterIP[63]=input[ 6];
+    /*===========================================================================================================================================================================================================================*/
 
     /**
-     * ---www.amahdy.com---
-     * > Process of the algorithm numberOfRounds
-     */
-     for (int z = 0; z < numberOfRounds; z++) {
+    * Process of the algorithm numberOfRounds.
+    */
+    for (int z = 0; z < numberOfRounds; z++) {
         /**
-         * ---www.amahdy.com---
-         * > Expansion permutation ExP
+         * Expansion permutation ExP.
          */
-         /*Expansion: ======================================================================================================================================================================================================================================*/
+        /*Expansion: ======================================================================================================================================================================================================================================*/
         char *InputAfterExP=new char[48];
         InputAfterExP[ 0]=(InputAfterIP+32)[31]; InputAfterExP[ 1]=(InputAfterIP+32)[ 0]; InputAfterExP[ 2]=(InputAfterIP+32)[ 1]; InputAfterExP[ 3]=(InputAfterIP+32)[ 2]; InputAfterExP[ 4]=(InputAfterIP+32)[ 3]; InputAfterExP[ 5]=(InputAfterIP+32)[ 4];
         InputAfterExP[ 6]=(InputAfterIP+32)[ 3]; InputAfterExP[ 7]=(InputAfterIP+32)[ 4]; InputAfterExP[ 8]=(InputAfterIP+32)[ 5]; InputAfterExP[ 9]=(InputAfterIP+32)[ 6]; InputAfterExP[10]=(InputAfterIP+32)[ 7]; InputAfterExP[11]=(InputAfterIP+32)[ 8];
@@ -198,16 +211,14 @@ char* CDES::DES(char *inputDec_8, bool method) {
         /*=================================================================================================================================================================================================================================================*/
 
         /**
-         * ---www.amahdy.com---
-         * > Decide here which key will be used
-         * >  method  >>> DECRYPTION
-         * >  !method >>> ENCRYPTION
+         * Decide here which key will be used,
+         *      method  >>> DECRYPTION
+         *      !method >>> ENCRYPTION
          */
         char myKey = method ? (numberOfRounds - 1) - z : z;
 
         /**
-         * ---www.amahdy.com---
-         * > XOR with key
+         * XOR with key.
          */
         char *InputAfterKeyXor = new char[48];
         exor(InputAfterExP, keyEx[myKey], InputAfterKeyXor, 48);
@@ -215,8 +226,7 @@ char* CDES::DES(char *inputDec_8, bool method) {
         delete[] InputAfterExP;
 
         /**
-         * ---www.amahdy.com---
-         * > Proceed to S-Boxes
+         * Proceed to S-Boxes.
          */
         char *InputAfterSBox = new char[32];
         for (int j = 0; j < 48; j += 6) {
@@ -232,8 +242,7 @@ char* CDES::DES(char *inputDec_8, bool method) {
         delete[] InputAfterKeyXor;
 
         /**
-         * ---www.amahdy.com---
-         * > Permutation (after s-box) PSB
+         * Permutation (after s-box) PSB.
          */
         /*Permutation (after s-box): ========================================================================================================================*/
         char *InputAfterPSB=new char[32];
@@ -246,12 +255,11 @@ char* CDES::DES(char *inputDec_8, bool method) {
         InputAfterPSB[24]=InputAfterSBox[18]; InputAfterPSB[25]=InputAfterSBox[12]; InputAfterPSB[26]=InputAfterSBox[29]; InputAfterPSB[27]=InputAfterSBox[ 5];
         InputAfterPSB[28]=InputAfterSBox[21]; InputAfterPSB[29]=InputAfterSBox[10]; InputAfterPSB[30]=InputAfterSBox[ 3]; InputAfterPSB[31]=InputAfterSBox[24];
         /*===================================================================================================================================================*/
-         //Clean up, we don't need InputAfterSBox anymore:
+        //Clean up, we don't need InputAfterSBox anymore:
         delete[] InputAfterSBox;
 
         /**
-         * ---www.amahdy.com---
-         * > XOR final, with the original input left side
+         * XOR final, with the original input left side.
          */
         char *InputAfterFinalXor = new char[32];
         exor(InputAfterIP, InputAfterPSB, InputAfterFinalXor, 32);
@@ -259,8 +267,7 @@ char* CDES::DES(char *inputDec_8, bool method) {
         delete[] InputAfterPSB;
 
         /**
-         * ---www.amahdy.com---
-         * > Re-Initializing for new round
+         * Re-Initializing for new round.
          */
         for (int k = 0; k < 32; k++) {
             InputAfterIP[k ] = InputAfterIP[k + 32];
@@ -271,8 +278,7 @@ char* CDES::DES(char *inputDec_8, bool method) {
     }
 
     /**
-     * ---www.amahdy.com---
-     * > Final permutation FP, inverse of initial pemutation before ending
+     * Final permutation FP, inverse of initial pemutation before ending.
      */
     char *InputFinal = new char[64];
     for (int x = 0; x < 32; x++) {
@@ -304,8 +310,10 @@ char* CDES::DES(char *inputDec_8, bool method) {
 
 /**
  * ==============================================
- * ENCYPT Function
- * >return a DES encrypted version of 'plainText'.
+ * @name ENCRYPT Function
+ * @desc return a DES encrypted version of 'plainText'.
+ * @param char*: a plain text.
+ * @return char*: a DES cypher text.
  * ==============================================
  */
 char* CDES::Encrypt(char *plainText) {
@@ -314,8 +322,10 @@ char* CDES::Encrypt(char *plainText) {
 
 /**
  * ==============================================
- * DECYPT Function
- * >return a DES decrypted version of 'cipherText'.
+ * @name DECRYPT Function
+ * @desc return a DES decrypted version of 'cipherText'.
+ * @param char*: a DES cipher text.
+ * @return char*: a plain text.
  * ==============================================
  */
 char* CDES::Decrypt(char *cipherText) {
@@ -324,8 +334,10 @@ char* CDES::Decrypt(char *cipherText) {
 
 /**
  * ==============================================
- * CONSTRUCTOR
- * >Initialize number of rounds and the S-BOX
+ * @name CONSTRUCTOR
+ * @desc Initialize number of rounds and the S-BOX.
+ * @param int: Number of rounds.
+ * @return void
  * ==============================================
  */
 CDES::CDES(int NumberOfRounds) {
@@ -380,8 +392,10 @@ CDES::CDES(int NumberOfRounds) {
 
 /**
  * ==============================================
- * DESTRUCTOR
- * >Destroy the Key Expansion
+ * @name DESTRUCTOR
+ * @desc Destroy the Key Expansion.
+ * @param void
+ * @return void
  * ==============================================
  */
 CDES::~CDES() {
