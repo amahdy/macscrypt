@@ -30,20 +30,20 @@ int main(int argc, char** argv) {
     char* PLAINTEXT;
     char* CYPHERTEXT;
 
-    PLAINTEXT = new char[17];
-    PLAINTEXT = "0123456789ABCDEF";
+    PLAINTEXT = new char[9];
+    PLAINTEXT = "01234567";
 
     CYPHERTEXT = DES.Encrypt(PLAINTEXT);
     std::cout<<"Cypher: ";
-    disp(CYPHERTEXT, 17);
+    disp(CYPHERTEXT, 9);
     std::cout<<std::endl;
 
-//    CYPHERTEXT = new char[17];
-//    CYPHERTEXT = "0123456789ABCDEF";
+//    CYPHERTEXT = new char[9];
+//    CYPHERTEXT = "01234567";
 
     PLAINTEXT = DES.Decrypt(CYPHERTEXT);
     std::cout<<"Plain: ";
-    disp(PLAINTEXT, 17);
+    disp(PLAINTEXT, 9);
     std::cout<<std::endl;
     
     return (EXIT_SUCCESS);
