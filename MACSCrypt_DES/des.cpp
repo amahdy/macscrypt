@@ -52,10 +52,11 @@ void CDES::BinToHex(const char *bin, char *hex) {
  */
 void CDES::DecToBin(const char *dec_8, char *bin_64) {
     int number;
-    for (int i = 0, z = 0; i < 8; i++) {
+    for (int i = 0; i < 8; i++) {
         number = dec_8[i] + 128;
-        for (z = 0; z < 8; z++, number /= 2)
+        for (int z = 0; z < 8; z++, number /= 2) {
             bin_64[(i * 8) + 7 - z] = (number % 2) ? 1 : 0;
+        }
     }
 }
 
@@ -69,8 +70,17 @@ void CDES::DecToBin(const char *dec_8, char *bin_64) {
  * ==============================================
  */
 void CDES::BinToDec(const char *bin_64, char *dec_8) {
-    for (int i = 0; i < 8; i++)
-        dec_8[i] = 128 * bin_64[i * 8] + 64 * bin_64[1 + (i * 8)] + 32 * bin_64[2 + (i * 8)] + 16 * bin_64[3 + (i * 8)] + 8 * bin_64[4 + (i * 8)] + 4 * bin_64[5 + (i * 8)] + 2 * bin_64[6 + (i * 8)] + bin_64[7 + (i * 8)] - 128;
+    for (int i = 0; i < 8; i++) {
+        dec_8[i] = 128 * bin_64[i * 8]
+                 +  64 * bin_64[1 + (i * 8)]
+                 +  32 * bin_64[2 + (i * 8)]
+                 +  16 * bin_64[3 + (i * 8)]
+                 +   8 * bin_64[4 + (i * 8)]
+                 +   4 * bin_64[5 + (i * 8)]
+                 +   2 * bin_64[6 + (i * 8)]
+                 +       bin_64[7 + (i * 8)]
+                 - 128;
+    }
 }
 
 /**
@@ -84,11 +94,13 @@ void CDES::BinToDec(const char *bin_64, char *dec_8) {
  */
 void CDES::rotation(char *data, int rotNum) {
     char aux = *data;
-    for (int i = 0; i < 27; i++)
+    for (int i = 0; i < 27; i++) {
         data[i] = data[i + 1];
+    }
     data[27] = aux;
-    if ((rotNum != 1) && (rotNum != 2) && (rotNum != 9) && (rotNum != 16))
+    if ((rotNum != 1) && (rotNum != 2) && (rotNum != 9) && (rotNum != 16)) {
         rotation(data, 1);
+    }
 }
 
 /**
@@ -103,8 +115,9 @@ void CDES::rotation(char *data, int rotNum) {
  * ==============================================
  */
 void CDES::exor(char *a, char *b, char *result, int n) {
-    for (int i = 0; i < n; i++)
+    for (int i = 0; i < n; i++) {
         result[i] = a[i]^b[i];
+    }
 }
 
 /**
@@ -177,10 +190,10 @@ char* CDES::DES(char *inputDec_8, bool method) {
     DecToBin(inputDec_8, input);
 
     /**
-    * IP-1,
-    *      left  side: InputAfterIP    to InputAfterIP+31.
-    *      right side: InputAfterIP+32 to InputAfterIP+63.
-    */
+     * IP-1,
+     *      left  side: InputAfterIP    to InputAfterIP+31.
+     *      right side: InputAfterIP+32 to InputAfterIP+63.
+     */
     /*Initial permutation: ======================================================================================================================================================================================================*/
     char *InputAfterIP=new char[64];
     InputAfterIP[ 0]=input[57]; InputAfterIP[ 1]=input[49]; InputAfterIP[ 2]=input[41]; InputAfterIP[ 3]=input[33]; InputAfterIP[ 4]=input[25]; InputAfterIP[ 5]=input[17]; InputAfterIP[ 6]=input[ 9]; InputAfterIP[ 7]=input[ 1];
@@ -194,8 +207,8 @@ char* CDES::DES(char *inputDec_8, bool method) {
     /*===========================================================================================================================================================================================================================*/
 
     /**
-    * Process of the algorithm numberOfRounds.
-    */
+     * Process of the algorithm numberOfRounds.
+     */
     for (int z = 0; z < numberOfRounds; z++) {
         /**
          * Expansion permutation ExP.
@@ -237,8 +250,9 @@ char* CDES::DES(char *inputDec_8, bool method) {
                     [(2 * InputAfterKeyXor[j]) + InputAfterKeyXor[j + 5]]
                     [(8 * InputAfterKeyXor[j + 1])+(4 * InputAfterKeyXor[j + 2])+(2 * InputAfterKeyXor[j + 3]) + InputAfterKeyXor[j + 4]];
 
-            for (char i = 4; i > 0; sSel /= 2)
+            for (char i = 4; i > 0; sSel /= 2) {
                 InputAfterSBox[--i + (4 * k)] = sSel % 2;
+            }
         }
         //Clean up, we don't need InputAfterKeyXor anymore:
         delete[] InputAfterKeyXor;
