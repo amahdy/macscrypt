@@ -22,10 +22,10 @@ void disp(char* data, int length) {
  * entry point
  */
 int main(int argc, char** argv) {
-    char HEX16_KEY[]="0123456789ABCDEF";
+    char DEC8_KEY[]="01234567";
     int NUMBER_OF_ROUNDS=16;
     CDES DES(NUMBER_OF_ROUNDS);
-    DES.KeyGen(HEX16_KEY);
+    DES.KeyGen(DEC8_KEY);
 
     char* PLAINTEXT;
     char* CYPHERTEXT;
