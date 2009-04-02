@@ -7,59 +7,51 @@
 #define DESALGORITHM
 
 #include "Crypt.h"
+#include "bits.h"
 
 /**
  * ==============================================
  * @name DES CLASS
  * @desc Class definition for the DES algorithm.
- * @data %1 char**: The expanded key.
- *       %2 char[8][4][16]: the S-BOX.
- *       %3 int: number of rounds.
- * @member %1 char*: the main function.
- *         %2 void: hex to bin converter.
- *         %3 void: bin to hex converter.
- *         %4 void: dec to bin converter.
- *         %5 void: bin to dec converter.
- *         %6 void: rotation (shifting).
- *         %7 void: xor funciton.
- * @public %1 void: constructor, feed it with the number of rounds.
+ * @data %1 bits**: The expanded key.
+ *       %2 static const unsigned char[8][4][16]: the S-BOX.
+ *       %3 static const unsigned char[64]: the initial permutation 1.
+ *       %4 static const unsigned char[48]: the expansion permutation.
+ *       %5 static const unsigned char[32]: the permutation after s-box.
+ *       %6 static const unsigned char[64]: the final permutation.
+ *       %7 static const unsigned char[56]: the permutation choice 1.
+ *       %8 static const unsigned char[48]: the permutation choice 2.
+ *       %9 unsigned char: number of rounds.
+ * @member %1 unsigned char*: the main function.
+ *         %2 void: rotation (shifting) of the first half.
+ *         %3 void: rotation (shifting) of the second half.
+ * @public %1 void: constructor, feed it with the number of rounds (default is 16).
  *         %2 void: destructor, never mind ... called automatically.
  *         %3 void: key generator, should call this before anything to generate keys.
- *         %4 char*: call this to encrypt.
- *         %5 char*: call this to decrypt.
+ *         %4 unsigned char*: call this to encrypt.
+ *         %5 unsigned char*: call this to decrypt.
  * ==============================================
  */
 class CDES: public Crypt {
-    char **keyEx;
-    char s[8][4][16];
-    int numberOfRounds;
-    char* DES(char*, bool=false);
+    bits** keyEx;
+    static const unsigned char S_BOX[8][4][16];
+    static const unsigned char IP_1[64];
+    static const unsigned char EX_P[48];
+    static const unsigned char PASB[32];
+    static const unsigned char FI_P[64];
+    static const unsigned char PC_1[56];
+    static const unsigned char PC_2[48];
+    unsigned char numberOfRounds;
 
-    //void HexToBin(const char*, char*);
-    //void BinToHex(const char*, char*);
-    void DecToBin(const char*, char*);
-    void BinToDec(const char*, char*);
-    void rotation(char*, int);
-    void exor(char*, char*, char*, int);
+    unsigned char* DES(const unsigned char*, bool=false);
+    void rotation1(bits*, const unsigned char);
+    void rotation2(bits*, const unsigned char);
 public:
-    CDES(int=16);
+    CDES(const unsigned char=16);
     ~CDES();
-    void KeyGen(const char*);
-    char* Encrypt(char*);
-    char* Decrypt(char*);
-
-/**
- * >sample encryption:
- *      CDES DES(NUMBER_OF_ROUNDS);
- *      DES.KeyGen(16HEX_KEY);
- *      OUTPUT=DES.Encrypt(PLAINTEXT);
- *
- * >sample decryption:
- *      CDES DES(NUMBER_OF_ROUNDS);
- *      DES.KeyGen(16HEX_KEY);
- *      OUTPUT=DES.Decrypt(CYPHERTEXT);
- */
-
+    void KeyGen(const unsigned char*);
+    unsigned char* Encrypt(const unsigned char*);
+    unsigned char* Decrypt(const unsigned char*);
 };
 
 #endif
