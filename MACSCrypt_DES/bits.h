@@ -37,34 +37,28 @@ struct bits {
 //    }
 
     static unsigned char getBit(bits* a, unsigned char pos) {
-        unsigned char pos1 = pos / 8;
-        unsigned char pos2 = pos % 8;
-
-        switch(pos2) {
-            case 0: if(a[pos1].b0 == 0) return 0; else return 1; break;
-            case 1: if(a[pos1].b1 == 0) return 0; else return 1; break;
-            case 2: if(a[pos1].b2 == 0) return 0; else return 1; break;
-            case 3: if(a[pos1].b3 == 0) return 0; else return 1; break;
-            case 4: if(a[pos1].b4 == 0) return 0; else return 1; break;
-            case 5: if(a[pos1].b5 == 0) return 0; else return 1; break;
-            case 6: if(a[pos1].b6 == 0) return 0; else return 1; break;
-            case 7: if(a[pos1].b7 == 0) return 0; else return 1; break;
+        switch(pos % 8) {
+            case 0: if(a[pos / 8].b0 == 0) return 0; else return 1; break;
+            case 1: if(a[pos / 8].b1 == 0) return 0; else return 1; break;
+            case 2: if(a[pos / 8].b2 == 0) return 0; else return 1; break;
+            case 3: if(a[pos / 8].b3 == 0) return 0; else return 1; break;
+            case 4: if(a[pos / 8].b4 == 0) return 0; else return 1; break;
+            case 5: if(a[pos / 8].b5 == 0) return 0; else return 1; break;
+            case 6: if(a[pos / 8].b6 == 0) return 0; else return 1; break;
+            case 7: if(a[pos / 8].b7 == 0) return 0; else return 1; break;
         }
     }
 
     static void setBit(bits* a, unsigned char pos, unsigned char val) {
-        unsigned char pos1 = pos / 8;
-        unsigned char pos2 = pos % 8;
-
-        switch(pos2) {
-            case 0: a[pos1].b0 = (val == 0)? 0:1; break;
-            case 1: a[pos1].b1 = (val == 0)? 0:1; break;
-            case 2: a[pos1].b2 = (val == 0)? 0:1; break;
-            case 3: a[pos1].b3 = (val == 0)? 0:1; break;
-            case 4: a[pos1].b4 = (val == 0)? 0:1; break;
-            case 5: a[pos1].b5 = (val == 0)? 0:1; break;
-            case 6: a[pos1].b6 = (val == 0)? 0:1; break;
-            case 7: a[pos1].b7 = (val == 0)? 0:1; break;
+        switch(pos % 8) {
+            case 0: a[pos / 8].b0 = (val == 0)? 0:1; break;
+            case 1: a[pos / 8].b1 = (val == 0)? 0:1; break;
+            case 2: a[pos / 8].b2 = (val == 0)? 0:1; break;
+            case 3: a[pos / 8].b3 = (val == 0)? 0:1; break;
+            case 4: a[pos / 8].b4 = (val == 0)? 0:1; break;
+            case 5: a[pos / 8].b5 = (val == 0)? 0:1; break;
+            case 6: a[pos / 8].b6 = (val == 0)? 0:1; break;
+            case 7: a[pos / 8].b7 = (val == 0)? 0:1; break;
         }
         return;
     }
