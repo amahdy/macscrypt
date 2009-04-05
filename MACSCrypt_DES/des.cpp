@@ -118,10 +118,7 @@ unsigned char* CDES::DES(const unsigned char* inputDec_8, bool method) {
     /**
      * Transform the input as an 8 BYTES of type bits.
      */
-    bits* input = new bits[8];
-    for (unsigned char i = 0; i < 8; i++) {
-        input[i] = inputDec_8[i];
-    }
+    bits* input = (bits*) inputDec_8;
 
     /**
      * IP-1,
@@ -132,7 +129,6 @@ unsigned char* CDES::DES(const unsigned char* inputDec_8, bool method) {
     for (unsigned char i = 0; i < 64; i++) {
         bits::xBit(InputAfterIP, i, input, IP_1[i]);
     }
-    delete[] input;
     
     /**
      * Process of the algorithm numberOfRounds.
@@ -169,8 +165,12 @@ unsigned char* CDES::DES(const unsigned char* inputDec_8, bool method) {
         for (unsigned char j = 0; j < 48; j += 6) {
             unsigned char k = j / 6;
             unsigned char sSel = S_BOX[k]
-                                      [(2 * bits::getBit(InputAfterKeyXor, j)) + bits::getBit(InputAfterKeyXor, j + 5)]
-                                      [(8 * bits::getBit(InputAfterKeyXor, j + 1)) + (4 * bits::getBit(InputAfterKeyXor, j + 2)) + (2 * bits::getBit(InputAfterKeyXor, j + 3)) + bits::getBit(InputAfterKeyXor, j + 4)];
+                                      [ (2 * bits::getBit(InputAfterKeyXor, j))
+                                      +      bits::getBit(InputAfterKeyXor, j + 5)]
+                                      [ (8 * bits::getBit(InputAfterKeyXor, j + 1))
+                                      + (4 * bits::getBit(InputAfterKeyXor, j + 2))
+                                      + (2 * bits::getBit(InputAfterKeyXor, j + 3))
+                                      +      bits::getBit(InputAfterKeyXor, j + 4)];
             for (unsigned char i = 4; i > 0; sSel /= 2) {
                 bits::setBit(InputAfterSBox, --i + (4 * k), sSel % 2);
             }
@@ -224,16 +224,7 @@ unsigned char* CDES::DES(const unsigned char* inputDec_8, bool method) {
     }
     delete[] InputFinal;
 
-    /**
-     * Transform the output back to 8 BYTES of type unsigned char.
-     */
-    unsigned char *outputDec = new unsigned char[8];
-    for (unsigned char i = 0; i < 8; i++) {
-        outputDec[i] = output[i].toChar();
-    }
-    delete[] output;
-
-    return outputDec;
+    return (unsigned char*)output;
 }
 
 /**
@@ -248,10 +239,7 @@ void CDES::KeyGen(const unsigned char* Key_8) {
     /**
      * Transform the 8 BYTES key to type bits.
      */
-    bits *key = new bits[8];
-    for (unsigned char i = 0; i < 8; i++) {
-        key[i] = Key_8[i];
-    }
+    bits* key = (bits*) Key_8; //new bits[8];
 
     /**
      * Permutation choice 1.
@@ -260,7 +248,6 @@ void CDES::KeyGen(const unsigned char* Key_8) {
     for(unsigned char i = 0; i < 56; i++) {
         bits::xBit(KeyAfterPC1,  i, key, PC_1[i]);
     }
-    delete[] key;
 
     /**
      * Completing All Key-Gen numberOfRounds,
