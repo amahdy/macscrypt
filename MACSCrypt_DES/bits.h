@@ -14,7 +14,8 @@
 
 //#include <iostream>
 
-struct bits {
+class bits {
+public:
     unsigned char b7:1;
     unsigned char b6:1;
     unsigned char b5:1;
@@ -38,14 +39,14 @@ struct bits {
 
     static unsigned char getBit(bits* a, unsigned char pos) {
         switch(pos % 8) {
-            case 0: if(a[pos / 8].b0 == 0) return 0; else return 1; break;
-            case 1: if(a[pos / 8].b1 == 0) return 0; else return 1; break;
-            case 2: if(a[pos / 8].b2 == 0) return 0; else return 1; break;
-            case 3: if(a[pos / 8].b3 == 0) return 0; else return 1; break;
-            case 4: if(a[pos / 8].b4 == 0) return 0; else return 1; break;
-            case 5: if(a[pos / 8].b5 == 0) return 0; else return 1; break;
-            case 6: if(a[pos / 8].b6 == 0) return 0; else return 1; break;
-            case 7: if(a[pos / 8].b7 == 0) return 0; else return 1; break;
+            case 0: return(a[pos / 8].b0 == 1);
+            case 1: return(a[pos / 8].b1 == 1);
+            case 2: return(a[pos / 8].b2 == 1);
+            case 3: return(a[pos / 8].b3 == 1);
+            case 4: return(a[pos / 8].b4 == 1);
+            case 5: return(a[pos / 8].b5 == 1);
+            case 6: return(a[pos / 8].b6 == 1);
+            case 7: return(a[pos / 8].b7 == 1);
         }
     }
 
