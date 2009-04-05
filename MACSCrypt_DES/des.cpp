@@ -205,7 +205,7 @@ void CDES::KeyGen(const unsigned char* Key_8) {
     /**
      * Transform the 8 BYTES key to type bits.
      */
-    bits* key = (bits*) Key_8; //new bits[8];
+    bits* key = (bits*) Key_8;
 
     /**
      * Permutation choice 1.
