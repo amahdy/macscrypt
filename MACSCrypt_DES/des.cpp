@@ -15,34 +15,17 @@
  * ==============================================
  */
 void CDES::rotation1(bits* data, const unsigned char rotNum) {
+    unsigned char* ch = (unsigned char*) data;
     bits aux;
     aux.b0 = data[0].b0;
 
-    data[0].b0 = data[0].b1;
-    data[0].b1 = data[0].b2;
-    data[0].b2 = data[0].b3;
-    data[0].b3 = data[0].b4;
-    data[0].b4 = data[0].b5;
-    data[0].b5 = data[0].b6;
-    data[0].b6 = data[0].b7;
+    ch[0] << 1;
     data[0].b7 = data[1].b0;
 
-    data[1].b0 = data[1].b1;
-    data[1].b1 = data[1].b2;
-    data[1].b2 = data[1].b3;
-    data[1].b3 = data[1].b4;
-    data[1].b4 = data[1].b5;
-    data[1].b5 = data[1].b6;
-    data[1].b6 = data[1].b7;
+    ch[1] << 1;
     data[1].b7 = data[2].b0;
 
-    data[2].b0 = data[2].b1;
-    data[2].b1 = data[2].b2;
-    data[2].b2 = data[2].b3;
-    data[2].b3 = data[2].b4;
-    data[2].b4 = data[2].b5;
-    data[2].b5 = data[2].b6;
-    data[2].b6 = data[2].b7;
+    ch[2] << 1;
     data[2].b7 = data[3].b0;
 
     data[3].b0 = data[3].b1;
@@ -65,6 +48,7 @@ void CDES::rotation1(bits* data, const unsigned char rotNum) {
  * ==============================================
  */
 void CDES::rotation2(bits* data, const unsigned char rotNum) {
+    unsigned char* ch = (unsigned char*) data;
     bits aux;
     aux.b0 = data[3].b4;
 
@@ -73,31 +57,13 @@ void CDES::rotation2(bits* data, const unsigned char rotNum) {
     data[3].b6 = data[3].b7;
     data[3].b7 = data[4].b0;
 
-    data[4].b0 = data[4].b1;
-    data[4].b1 = data[4].b2;
-    data[4].b2 = data[4].b3;
-    data[4].b3 = data[4].b4;
-    data[4].b4 = data[4].b5;
-    data[4].b5 = data[4].b6;
-    data[4].b6 = data[4].b7;
+    ch[4] << 1;
     data[4].b7 = data[5].b0;
 
-    data[5].b0 = data[5].b1;
-    data[5].b1 = data[5].b2;
-    data[5].b2 = data[5].b3;
-    data[5].b3 = data[5].b4;
-    data[5].b4 = data[5].b5;
-    data[5].b5 = data[5].b6;
-    data[5].b6 = data[5].b7;
+    ch[5] << 1;
     data[5].b7 = data[6].b0;
 
-    data[6].b0 = data[6].b1;
-    data[6].b1 = data[6].b2;
-    data[6].b2 = data[6].b3;
-    data[6].b3 = data[6].b4;
-    data[6].b4 = data[6].b5;
-    data[6].b5 = data[6].b6;
-    data[6].b6 = data[6].b7;
+    ch[6] << 1;
     data[6].b7 = aux.b0;
 
     if ((rotNum != 1) && (rotNum != 2) && (rotNum != 9) && (rotNum != 16)) {
