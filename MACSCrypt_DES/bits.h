@@ -15,6 +15,7 @@
 //#include <iostream>
 
 class bits {
+
 public:
     unsigned char b7:1;
     unsigned char b6:1;
