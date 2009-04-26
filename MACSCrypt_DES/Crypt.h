@@ -8,8 +8,8 @@
  * @data empty
  * @member empty
  * @public %1 virtual void: key generator function.
- *         %2 virtual unsigned char*: encrypt function.
- *         %3 virtual unsigned char*: decrypt function.
+ *         %2 virtual void*: encrypt function.
+ *         %3 virtual void*: decrypt function.
  * ==============================================
  */
 class Crypt {

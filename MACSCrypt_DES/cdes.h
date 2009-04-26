@@ -22,14 +22,14 @@
  *       %7 static const unsigned char[56]: the permutation choice 1.
  *       %8 static const unsigned char[48]: the permutation choice 2.
  *       %9 unsigned char: number of rounds.
- * @member %1 unsigned char*: the main function.
+ * @member %1 void*: the main function.
  *         %2 void: rotation (shifting) of the first half.
  *         %3 void: rotation (shifting) of the second half.
  * @public %1 void: constructor, feed it with the number of rounds (default is 16).
  *         %2 void: destructor, never mind ... called automatically.
  *         %3 void: key generator, should call this before anything to generate keys.
- *         %4 unsigned char*: call this to encrypt.
- *         %5 unsigned char*: call this to decrypt.
+ *         %4 void*: call this to encrypt.
+ *         %5 void*: call this to decrypt.
  * ==============================================
  */
 class CDES: public Crypt {

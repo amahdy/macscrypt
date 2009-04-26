@@ -75,9 +75,9 @@ void CDES::rotation2(bits* data, const unsigned char rotNum) {
  * ==============================================
  * @name DES THE MAIN FUNCTION
  * @desc the main function.
- * @param %1 const unsigned char*: 8 decimals representing the INPUT.
+ * @param %1 const void*: 8 decimals representing the INPUT.
  *        %2 bool: false for ENCRYPT and true for DECRYPT.
- * @return unsigned char*: 8 decimals representing the OUTPUT.
+ * @return void*: 8 decimals representing the OUTPUT.
  * ==============================================
  */
 void* CDES::DES(const void* inputDec_8, bool method) {
@@ -197,7 +197,7 @@ void* CDES::DES(const void* inputDec_8, bool method) {
  * ==============================================
  * @name KEY GENERATOR
  * @desc store in the 'keyEx' the expanded key.
- * @param const unsigned char*: the encryption/decryption process key.
+ * @param const void*: the encryption/decryption process key.
  * @return void
  * ==============================================
  */
@@ -238,8 +238,8 @@ void CDES::KeyGen(const void* Key_8) {
  * ==============================================
  * @name ENCRYPT Function
  * @desc return a DES encrypted version of 'plainText'.
- * @param const unsigned char*: a plain text.
- * @return unsigned char*: a DES cypher text.
+ * @param const void*: a plain text.
+ * @return void*: a DES cypher text.
  * ==============================================
  */
 void* CDES::Encrypt(const void* plainText) {
@@ -250,8 +250,8 @@ void* CDES::Encrypt(const void* plainText) {
  * ==============================================
  * @name DECRYPT Function
  * @desc return a DES decrypted version of 'cipherText'.
- * @param const unsigned char*: a DES cipher text.
- * @return unsigned char*: a plain text.
+ * @param const void*: a DES cipher text.
+ * @return void*: a plain text.
  * ==============================================
  */
 void* CDES::Decrypt(const void* cipherText) {
@@ -262,7 +262,7 @@ void* CDES::Decrypt(const void* cipherText) {
  * ==============================================
  * @name CONSTRUCTOR
  * @desc Initialize number of rounds.
- * @param int: Number of rounds [default: 16].
+ * @param const unsigned char: Number of rounds [default: 16].
  * @return void
  * ==============================================
  */
