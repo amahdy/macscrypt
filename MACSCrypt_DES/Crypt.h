@@ -14,9 +14,9 @@
  */
 class Crypt {
 public:
-    virtual void KeyGen(const unsigned char*)=0;
-    virtual unsigned char* Encrypt(const unsigned char*)=0;
-    virtual unsigned char* Decrypt(const unsigned char*)=0;
+    virtual void KeyGen(const void*)=0;
+    virtual void* Encrypt(const void*)=0;
+    virtual void* Decrypt(const void*)=0;
 };
 
 #endif
