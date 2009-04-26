@@ -43,15 +43,15 @@ class CDES: public Crypt {
     static const unsigned char PC_2[48];
     unsigned char numberOfRounds;
 
-    unsigned char* DES(const unsigned char*, bool=false);
+    void* DES(const void*, bool=false);
     void rotation1(bits*, const unsigned char);
     void rotation2(bits*, const unsigned char);
 public:
     CDES(const unsigned char=16);
     ~CDES();
-    void KeyGen(const unsigned char*);
-    unsigned char* Encrypt(const unsigned char*);
-    unsigned char* Decrypt(const unsigned char*);
+    void KeyGen(const void*);
+    void* Encrypt(const void*);
+    void* Decrypt(const void*);
 };
 
 #endif

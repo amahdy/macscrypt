@@ -80,7 +80,7 @@ void CDES::rotation2(bits* data, const unsigned char rotNum) {
  * @return unsigned char*: 8 decimals representing the OUTPUT.
  * ==============================================
  */
-unsigned char* CDES::DES(const unsigned char* inputDec_8, bool method) {
+void* CDES::DES(const void* inputDec_8, bool method) {
     /**
      * Transform the input as an 8 BYTES of type bits.
      */
@@ -190,7 +190,7 @@ unsigned char* CDES::DES(const unsigned char* inputDec_8, bool method) {
     }
     delete[] InputFinal;
 
-    return (unsigned char*)output;
+    return output;
 }
 
 /**
@@ -201,7 +201,7 @@ unsigned char* CDES::DES(const unsigned char* inputDec_8, bool method) {
  * @return void
  * ==============================================
  */
-void CDES::KeyGen(const unsigned char* Key_8) {
+void CDES::KeyGen(const void* Key_8) {
     /**
      * Transform the 8 BYTES key to type bits.
      */
@@ -242,7 +242,7 @@ void CDES::KeyGen(const unsigned char* Key_8) {
  * @return unsigned char*: a DES cypher text.
  * ==============================================
  */
-unsigned char* CDES::Encrypt(const unsigned char *plainText) {
+void* CDES::Encrypt(const void* plainText) {
     return (DES(plainText));
 }
 
@@ -254,7 +254,7 @@ unsigned char* CDES::Encrypt(const unsigned char *plainText) {
  * @return unsigned char*: a plain text.
  * ==============================================
  */
-unsigned char* CDES::Decrypt(const unsigned char *cipherText) {
+void* CDES::Decrypt(const void* cipherText) {
     return (DES(cipherText, true));
 }
 

@@ -27,14 +27,14 @@ int main(int argc, char** argv) {
     CDES DES(NUMBER_OF_ROUNDS);
     DES.KeyGen(DEC8_KEY);
 
-    unsigned char* PLAINTEXT = (unsigned char*)"01234567";
-    unsigned char* CYPHERTEXT = new unsigned char[8];
+    void* PLAINTEXT = (unsigned char*)"01234567";
+    void* CYPHERTEXT; // = new unsigned char[8];
 
     CYPHERTEXT = DES.Encrypt(PLAINTEXT);
-    std::cout<<"Cypher: "; disp(CYPHERTEXT, 8); std::cout<<std::endl;
+    std::cout<<"Cypher: "; disp((unsigned char*)CYPHERTEXT, 8); std::cout<<std::endl;
 
     PLAINTEXT = DES.Decrypt(CYPHERTEXT);
-    std::cout<<"Plain: "; disp(PLAINTEXT, 8); std::cout<<std::endl;
+    std::cout<<"Plain: "; disp((unsigned char*)PLAINTEXT, 8); std::cout<<std::endl;
 
     return (EXIT_SUCCESS);
 }
