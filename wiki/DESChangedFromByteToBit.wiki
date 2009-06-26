@@ -1,5 +1,5 @@
+#summary This page talk about the major changes made in DES to increase its performance.
 #labels Phase-QA,Phase-Implementation
-#This page talk about the major changes made in DES to increase its performance.
 
 = Introduction =
 
