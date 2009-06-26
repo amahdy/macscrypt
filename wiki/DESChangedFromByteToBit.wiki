@@ -17,7 +17,7 @@ char* bigVar = new char[64];
 }}}
 I was defining in the memory 64 chars which is 64 bytes, now simply this:
 {{{
-bitsr* tinyVar = new bits[8];
+bits* tinyVar = new bits[8];
 }}}
 I saved actually 7/8 of the memory, here it's 56 bytes saved! Waw imagine this number each time in each single processing part of the algorithm, huh, this is the biggest part I was talking about and I wanted to start with it ... now let's proceed to other more improvements...
 
