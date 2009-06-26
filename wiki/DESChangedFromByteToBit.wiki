@@ -25,7 +25,7 @@ I was thinking about the ABSTRACT CRYPT class used here in this project, the inp
 What If I decided to change something in the algorithm so that I get some benefit in some part, and the algorithm will stay working for decrypt what's was encrypted with it, the problem here, it won't be DES but DENS (Not Standard) and it won't be usable to deal with standard data from anywhere ... and that's the point, the algorithm design wasn't mainly designed to deal with a text or array of "char" ... it just deal with 16 hexadecimal or as used here 8 decimals, so give the input 8 TRUE decimals and get as output 8 TRUE decimals and that's now you are standard! This can maybe answer to *what's the difference* and *why*, and here is the answer to *less processing*:
 In the old version to meet this strategy I used to add 128 to the value of each char in the input and subtract 128 from each char from the output, now it's no longer needed when I used the "unsigned char" the input must be valid and correct and *less* processing when I avoid the 128 thingy each time ;)
 
-===Update===
+*Update*
 Now the unsigned char pointer has changed to be void pointer, that way the algorithm can support the encryption/decryption of anything, and the controller for this will be the interface that uses the algorithm not the algorithm itself, theoretically the algorithm is able to deal with ANY 8 bytes in the memory regardless their type or anything, practically the algorithm can do that depending on your customized user interface, well if you want it to just deal with "unsigned char", it will!
 
 I was using something like this line:
