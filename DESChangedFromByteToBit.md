@@ -1,0 +1,44 @@
+# Introduction #
+
+This page is not a standard 'wiki' page, but just I wanted to explain the major changes that I did in DES to increase its performance, well let's jump to the details directly...
+
+
+# Details #
+
+1. Let's start by talking about the biggest change in the code which is changing all the used variables during the processing from "char" to "bits" which is the new class implemented here and used inside the DES class; In brief "bits" class contains eight variables: b0, b1, b2, b3, b4, b5, b6 and b7 each of 1-bit and all of 1-byte, that's mean when you define an object from the bits class you actually occupy only 1 byte of data in the memory and can access each bit separately!
+I also added the simple operations needed for the DES algorithm processing only, I haven't put much time to write and test other operations as it's mainly -the bits class- written to serve the DES algorithm, at least for now ...
+
+I was using "char" to represent each bit in the algorithm, a char contains '0' or '1', now you can just define a "bits" object to hold eight bits and they are really only eight bits (1 byte) nothing more, that's for example if I was defining something like:
+```
+char* bigVar = new char[64];
+```
+I was defining in the memory 64 chars which is 64 bytes, now simply this:
+```
+bits* tinyVar = new bits[8];
+```
+I saved actually 7/8 of the memory, here it's 56 bytes saved! Waw imagine this number each time in each single processing part of the algorithm, huh, this is the biggest part I was talking about and I wanted to start with it ... now let's proceed to other more improvements...
+
+2. I was thinking about the ABSTRACT CRYPT class used here in this project, the input was char pointer but I decided to change it to unsigned char pointer, and here is what's the difference, why, and why this changed to a bit less processing:
+What If I decided to change something in the algorithm so that I get some benefit in some part, and the algorithm will stay working for decrypt what's was encrypted with it, the problem here, it won't be DES but DENS (Not Standard) and it won't be usable to deal with standard data from anywhere ... and that's the point, the algorithm design wasn't mainly designed to deal with a text or array of "char" ... it just deal with 16 hexadecimal or as used here 8 decimals, so give the input 8 TRUE decimals and get as output 8 TRUE decimals and that's now you are standard! This can maybe answer to **what's the difference** and **why**, and here is the answer to **less processing**:
+In the old version to meet this strategy I used to add 128 to the value of each char in the input and subtract 128 from each char from the output, now it's no longer needed when I used the "unsigned char" the input must be valid and correct and **less** processing when I avoid the 128 thingy each time ;)
+
+**Update**
+Now the unsigned char pointer has changed to be void pointer, that way the algorithm can support the encryption/decryption of anything, and the controller for this will be the interface that uses the algorithm not the algorithm itself, theoretically the algorithm is able to deal with ANY 8 bytes in the memory regardless their type or anything, practically the algorithm can do that depending on your customized user interface, well if you want it to just deal with "unsigned char", it will!
+
+3. I was using something like this line:
+```
+varLeft[7] = varRight[50]; varLeft[8] = varRight[34]; ...
+```
+to process permutations and S-boxes, now this is how it looks like:
+```
+const unsigned char PERM[64] = {..., 50, 34, ...};
+varLeft[i] = varRight[ PERM[i] ];
+```
+Maybe you can think that the first is less in memory somehow, but after thinking about it, it's not less by anyway, here is why: the keyword const is exactly the same as writing things inline, the difference here is how it can save life in code writing, I really loved it after seeing what it did to the code size ... and here is how it can save some memory; The second example uses the index "i" inside a for loop, but the first one needs about 64 index pre-defined inline, so now we have one variable "i" vs the number of those constants, moreover I changed "i" to be an unsigned char because the loop count isn't bigger than 256 iterations so no need to those 4 bytes "int".
+To just mention this, in processing, the newest has a more processing which is a for loop, but the oldest has a biggest assembly lines for each assignment so I can say that the newest saved too much assignment statements which means less in the size of compiled code, but a bit more processing which is a for loop. For example instead of having N lines of executions, we got 1 line inside a for loop which is a very common useful technique for a cleaner code and the processing isn't that much to care about.
+
+All what was mentioned in the last paragraph is valid without looking to the xBit() function inside the bits class, I'm trying to get a better function somehow to exchange bits by a better method, but till that, all mentioned theories in the previous paragraph is not applicable in the current algorithm.
+
+# Important Note #
+
+- The class bits is not considered to be a member of the MACSCrypt project, it's only used to improve the DES class, and it's not fully completed, it won't be maintained now as well.
